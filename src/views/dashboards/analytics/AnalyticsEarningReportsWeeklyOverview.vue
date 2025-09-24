@@ -1,6 +1,6 @@
 <script setup>
-import { useTheme } from 'vuetify'
 import { hexToRgb } from '@layouts/utils'
+import { useTheme } from 'vuetify'
 
 const vuetifyTheme = useTheme()
 
@@ -19,7 +19,7 @@ const series = [{
 const chartOptions = computed(() => {
   const currentTheme = vuetifyTheme.current.value.colors
   const variableTheme = vuetifyTheme.current.value.variables
-  
+
   return {
     chart: {
       parentHeightOffset: 0,
@@ -46,13 +46,13 @@ const chartOptions = computed(() => {
       },
     },
     colors: [
-      `rgba(${ hexToRgb(currentTheme.primary) },${ variableTheme['dragged-opacity'] })`,
-      `rgba(${ hexToRgb(currentTheme.primary) },${ variableTheme['dragged-opacity'] })`,
-      `rgba(${ hexToRgb(currentTheme.primary) },${ variableTheme['dragged-opacity'] })`,
-      `rgba(${ hexToRgb(currentTheme.primary) },${ variableTheme['dragged-opacity'] })`,
-      `rgba(${ hexToRgb(currentTheme.primary) }, 1)`,
-      `rgba(${ hexToRgb(currentTheme.primary) },${ variableTheme['dragged-opacity'] })`,
-      `rgba(${ hexToRgb(currentTheme.primary) },${ variableTheme['dragged-opacity'] })`,
+      `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
+      `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
+      `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
+      `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
+      `rgba(${hexToRgb(currentTheme.primary)}, 1)`,
+      `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
+      `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
     ],
     dataLabels: { enabled: false },
     legend: { show: false },
@@ -70,7 +70,7 @@ const chartOptions = computed(() => {
       axisTicks: { show: false },
       labels: {
         style: {
-          colors: `rgba(${ hexToRgb(currentTheme['on-surface']) },${ variableTheme['disabled-opacity'] })`,
+          colors: `rgba(${hexToRgb(currentTheme['on-surface'])},${variableTheme['disabled-opacity']})`,
           fontSize: '13px',
           fontFamily: 'Public Sans',
         },
@@ -124,36 +124,24 @@ const moreList = [
 <template>
   <VCard>
     <VCardItem class="pb-sm-0">
-      <VCardTitle>Earning Reports</VCardTitle>
+      <VCardTitle>Earning RepoOOrts</VCardTitle>
       <VCardSubtitle>Weekly Earnings Overview</VCardSubtitle>
 
       <template #append>
         <div class="mt-n4 me-n2">
-          <MoreBtn
-            size="small"
-            :menu-list="moreList"
-          />
+          <MoreBtn size="small" :menu-list="moreList" />
         </div>
       </template>
     </VCardItem>
 
     <VCardText>
       <VRow>
-        <VCol
-          cols="12"
-          sm="5"
-          lg="6"
-          class="d-flex flex-column align-self-center"
-        >
+        <VCol cols="12" sm="5" lg="6" class="d-flex flex-column align-self-center">
           <div class="d-flex align-center gap-2 mb-3 flex-wrap">
             <h2 class="text-h2">
               $468
             </h2>
-            <VChip
-              label
-              size="small"
-              color="success"
-            >
+            <VChip label size="small" color="success">
               +4.2%
             </VChip>
           </div>
@@ -163,39 +151,17 @@ const moreList = [
           </span>
         </VCol>
 
-        <VCol
-          cols="12"
-          sm="7"
-          lg="6"
-        >
-          <VueApexCharts
-            :options="chartOptions"
-            :series="series"
-            height="161"
-          />
+        <VCol cols="12" sm="7" lg="6">
+          <VueApexCharts :options="chartOptions" :series="series" height="161" />
         </VCol>
       </VRow>
 
       <div class="border rounded mt-5 pa-5">
         <VRow>
-          <VCol
-            v-for="report in earningsReports"
-            :key="report.title"
-            cols="12"
-            sm="4"
-          >
+          <VCol v-for="report in earningsReports" :key="report.title" cols="12" sm="4">
             <div class="d-flex align-center">
-              <VAvatar
-                rounded
-                size="26"
-                :color="report.color"
-                variant="tonal"
-                class="me-2"
-              >
-                <VIcon
-                  size="18"
-                  :icon="report.icon"
-                />
+              <VAvatar rounded size="26" :color="report.color" variant="tonal" class="me-2">
+                <VIcon size="18" :icon="report.icon" />
               </VAvatar>
 
               <h6 class="text-base font-weight-regular">
@@ -205,13 +171,7 @@ const moreList = [
             <h6 class="text-h4 my-2">
               {{ report.amount }}
             </h6>
-            <VProgressLinear
-              :model-value="report.progress"
-              :color="report.color"
-              height="4"
-              rounded
-              rounded-bar
-            />
+            <VProgressLinear :model-value="report.progress" :color="report.color" height="4" rounded rounded-bar />
           </VCol>
         </VRow>
       </div>

@@ -1,6 +1,4 @@
 <script setup>
-import { useTheme } from 'vuetify'
-import CardStatistics from '@/views/pages/cards/card-statistics/CardStatistics.vue'
 import CardStatisticsAverageDailySales from '@/views/pages/cards/card-statistics/CardStatisticsAverageDailySales.vue'
 import CardStatisticsDailyTraffic from '@/views/pages/cards/card-statistics/CardStatisticsDailyTraffic.vue'
 import CardStatisticsExpensesRadialBarCharts from '@/views/pages/cards/card-statistics/CardStatisticsExpensesRadialBarCharts.vue'
@@ -9,11 +7,11 @@ import CardStatisticsImpressionLineCharts from '@/views/pages/cards/card-statist
 import CardStatisticsOrderBarCharts from '@/views/pages/cards/card-statistics/CardStatisticsOrderBarCharts.vue'
 import CardStatisticsRevenueGrowth from '@/views/pages/cards/card-statistics/CardStatisticsRevenueGrowth.vue'
 import CardStatisticsSalesAreaCharts from '@/views/pages/cards/card-statistics/CardStatisticsSalesAreaCharts.vue'
-import CardStatisticsSalesOverview from '@/views/pages/cards/card-statistics/CardStatisticsSalesOverview.vue'
 import CardStatisticsSessionsBarWithGapCharts from '@/views/pages/cards/card-statistics/CardStatisticsSessionsBarWithGapCharts.vue'
 import CardStatisticsTotalProfitLineCharts from '@/views/pages/cards/card-statistics/CardStatisticsTotalProfitLineCharts.vue'
 import CardStatisticsTransactions from '@/views/pages/cards/card-statistics/CardStatisticsTransactions.vue'
 import CardStatisticsVehicleCharts from '@/views/pages/cards/card-statistics/CardStatisticsVehicleCharts.vue'
+import { useTheme } from 'vuetify'
 
 const vuetifyTheme = useTheme()
 const currentTheme = vuetifyTheme.current.value.colors
@@ -314,80 +312,42 @@ const simpleStatisticsDemoCards = [
 <template>
   <VRow class="match-height">
     <!-- 👉 Transition Card  -->
-    <VCol
-      cols="12"
-      md="8"
-    >
+    <VCol cols="12" md="8">
       <CardStatisticsTransactions />
     </VCol>
 
     <!-- 👉 Vertical Simple Cards -->
-    <VCol
-      v-for="statistics in statisticsVerticalSimple"
-      :key="statistics.title"
-      md="2"
-      cols="6"
-    >
+    <VCol v-for="statistics in statisticsVerticalSimple" :key="statistics.title" md="2" cols="6">
       <CardStatisticsVerticalSimple v-bind="statistics" />
     </VCol>
 
     <!-- 👉 Order Bar Chart -->
-    <VCol
-      cols="12"
-      sm="6"
-      md="4"
-      lg="2"
-    >
+    <VCol cols="12" sm="6" md="4" lg="2">
       <CardStatisticsOrderBarCharts />
     </VCol>
 
     <!-- 👉 Total Sales Area Chart -->
-    <VCol
-      cols="12"
-      sm="6"
-      md="4"
-      lg="2"
-    >
+    <VCol cols="12" sm="6" md="4" lg="2">
       <CardStatisticsSalesAreaCharts />
     </VCol>
 
     <!-- 👉 Total Profit Line Chart -->
-    <VCol
-      cols="12"
-      sm="6"
-      md="4"
-      lg="2"
-    >
+    <VCol cols="12" sm="6" md="4" lg="2">
       <CardStatisticsTotalProfitLineCharts />
     </VCol>
 
     <!-- 👉 Sessions Bar Chart with Gaps -->
-    <VCol
-      cols="12"
-      sm="6"
-      md="4"
-      lg="2"
-    >
+    <VCol cols="12" sm="6" md="4" lg="2">
       <CardStatisticsSessionsBarWithGapCharts />
     </VCol>
 
     <!-- 👉 Total Revenue Radial Bar Chart -->
-    <VCol
-      cols="12"
-      sm="6"
-      md="4"
-      lg="2"
-    >
+    <VCol cols="12" sm="6" md="4" lg="2">
       <CardStatisticsExpensesRadialBarCharts />
     </VCol>
 
     <!-- 👉 Total Revenue Line Chart -->
-    <VCol
-      cols="12"
-      sm="6"
-      md="4"
-      lg="2"
-    >
+    <VCol cols="12" sm="6" md="4" lg="2">
       <CardStatisticsImpressionLineCharts />
     </VCol>
 
@@ -397,83 +357,41 @@ const simpleStatisticsDemoCards = [
     </VCol>
 
     <!-- 👉 Horizontal Cards -->
-    <VCol
-      v-for="statistics in statisticsHorizontal"
-      :key="statistics.title"
-      cols="12"
-      sm="6"
-      md="3"
-    >
+    <VCol v-for="statistics in statisticsHorizontal" :key="statistics.title" cols="12" sm="6" md="3">
       <CardStatisticsHorizontal v-bind="statistics" />
     </VCol>
 
     <!-- 👉 Vertical Cards -->
-    <VCol
-      v-for="statistics in statisticsVertical"
-      :key="statistics.title"
-      cols="12"
-      sm="6"
-      md="3"
-    >
+    <VCol v-for="statistics in statisticsVertical" :key="statistics.title" cols="12" sm="6" md="3">
       <CardStatisticsVertical v-bind="statistics" />
     </VCol>
 
     <!-- 👉 Average Daily Sales -->
-    <VCol
-      cols="12"
-      sm="6"
-      lg="3"
-    >
+    <VCol cols="12" sm="6" lg="3">
       <CardStatisticsAverageDailySales />
     </VCol>
 
     <!-- 👉 Sales Overview -->
-    <VCol
-      cols="12"
-      sm="6"
-      lg="3"
-    >
-      <CardStatisticsSalesOverview />
+    <VCol cols="12" sm="6" lg="3">
+
     </VCol>
 
     <!-- 👉 Daily Traffic -->
-    <VCol
-      cols="12"
-      sm="6"
-      lg="3"
-    >
+    <VCol cols="12" sm="6" lg="3">
       <CardStatisticsDailyTraffic />
     </VCol>
 
     <!-- 👉 Statistics -->
-    <VCol
-      cols="12"
-      sm="6"
-      lg="3"
-    >
-      <CardStatistics />
+    <VCol cols="12" sm="6" lg="3">
+
     </VCol>
 
     <!-- 👉 Total profit basic card -->
-    <VCol
-      v-for="demo in simpleStatisticsDemoCards"
-      :key="demo.title"
-      cols="12"
-      sm="6"
-      md="2"
-    >
+    <VCol v-for="demo in simpleStatisticsDemoCards" :key="demo.title" cols="12" sm="6" md="2">
       <VCard>
         <VCardText>
-          <VAvatar
-            :color="demo.color"
-            variant="tonal"
-            rounded
-            size="44"
-          >
-            <VIcon
-              :icon="demo.icon"
-              size="28"
-            />
+          <VAvatar :color="demo.color" variant="tonal" rounded size="44">
+            <VIcon :icon="demo.icon" size="28" />
           </VAvatar>
 
           <h5 class="text-h5 mt-3">
@@ -485,11 +403,7 @@ const simpleStatisticsDemoCards = [
           <p class="mb-3 text-high-emphasis">
             {{ demo.stat }}
           </p>
-          <VChip
-            :color="demo.color"
-            label
-            size="small"
-          >
+          <VChip :color="demo.color" label size="small">
             {{ demo.change }}
           </VChip>
         </VCardText>
@@ -497,18 +411,12 @@ const simpleStatisticsDemoCards = [
     </VCol>
 
     <!-- 👉 Revenue Growth -->
-    <VCol
-      cols="12"
-      md="4"
-    >
+    <VCol cols="12" md="4">
       <CardStatisticsRevenueGrowth />
     </VCol>
 
     <!-- 👉 Generated Leads -->
-    <VCol
-      cols="12"
-      md="4"
-    >
+    <VCol cols="12" md="4">
       <CardStatisticsGeneratedLeads />
     </VCol>
   </VRow>
