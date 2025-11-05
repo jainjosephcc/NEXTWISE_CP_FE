@@ -115,7 +115,7 @@
                 class="bg-white dark:bg-[#0F172A]/80 dark:backdrop-blur-sm shadow-xl shadow-slate-900/5 dark:shadow-2xl dark:shadow-black/40 border border-slate-200 dark:border-white/10 rounded-2xl p-6 sm:p-8">
                 <!-- Logo -->
                 <div class="flex justify-center mb-8">
-                    <img id="logo" src="/logo_light.png" alt="Coral Markets" class="h-12 w-auto">
+                    <img id="logo" src="/light_logo.svg" alt="Coral Markets" class="h-12 w-auto">
                 </div>
 
                 <!-- Welcome Message -->
@@ -283,7 +283,7 @@
             }
 
             updateLogo(theme) {
-                this.logo.src = theme === 'dark' ? '/logo_dark.png' : '/logo_light.png';
+                this.logo.src = theme === 'dark' ? '/dark_logo.svg' : '/light_logo.svg';
             }
 
             updateIcons(theme) {
@@ -498,7 +498,7 @@
     - Logo has alt text
     
     ✅ Dark & light asset swap verified
-    - Logo automatically switches between logo_light.png and logo_dark.png
+    - Logo automatically switches between light_logo.svg and dark_logo.svg
     - Theme toggle persists in localStorage
     - Respects system preference on first visit
     

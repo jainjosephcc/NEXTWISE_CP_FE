@@ -168,7 +168,7 @@
                 <div class="flex items-center justify-between h-16 px-6">
                     <!-- Left side - Logo and Breadcrumb -->
                     <div class="flex items-center space-x-4">
-                        <img id="header-logo" src="/logo_light.png" alt="Coral Markets" class="h-8 w-auto">
+                        <img id="header-logo" src="/light_logo.svg" alt="Coral Markets" class="h-8 w-auto">
                         <div class="hidden md:block">
                             <nav class="flex" aria-label="Breadcrumb">
                                 <ol class="flex items-center space-x-2">
@@ -573,7 +573,7 @@
             updateLogos(theme) {
                 // Sidebar uses icon, header uses full logo
                 this.sidebarLogo.src = theme === 'dark' ? '/icon_light.png' : '/icon_dark.png';
-                this.headerLogo.src = theme === 'dark' ? '/logo_light.png' : '/logo_dark.png';
+                this.headerLogo.src = theme === 'dark' ? '/light_logo.svg' : '/dark_logo.svg';
             }
 
             updateIcons(theme) {

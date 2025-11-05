@@ -160,7 +160,7 @@ onMounted(() => {
       <div class="login-card">
         <!-- Logo -->
         <div class="logo-container">
-          <img :src="isDarkMode ? '/logo_light.png' : '/logo_dark.png'" alt="Copy Trader" class="logo">
+          <img :src="isDarkMode ? '/light_logo.svg' : '/dark_logo.svg'" alt="Copy Trader" class="logo">
         </div>
 
         <!-- Welcome Message -->
