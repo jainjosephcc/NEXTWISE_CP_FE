@@ -1,1 +1,0 @@
-import{a0 as s,a1 as o,av as n,ax as i,a8 as m,b as c}from"./index-JiK_MWJ9.js";const r=s({start:Boolean,end:Boolean,...o(),...n()},"VListItemAction"),V=i()({name:"VListItemAction",props:r(),setup(t,e){let{slots:a}=e;return m(()=>c(t.tag,{class:["v-list-item-action",{"v-list-item-action--start":t.start,"v-list-item-action--end":t.end},t.class],style:t.style},a)),{}}});export{V};

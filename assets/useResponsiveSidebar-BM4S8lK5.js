@@ -1,0 +1,1 @@
+import{bf as i,r,w as o}from"./index-BWmc9D7q.js";const c=(t=void 0)=>{const{mdAndDown:n,name:s}=i(),a=t||n,e=r(!0);return(()=>{e.value=!a.value})(),o(s,()=>{e.value=!a.value}),{isLeftSidebarOpen:e}};export{c as u};
