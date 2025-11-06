@@ -2,10 +2,9 @@
 
 
 // Reactive References
-import { ref } from "vue";
 import AppSelect from "@core/components/app-form-elements/AppSelect.vue";
+import { ref } from "vue";
 
-import data from '@/views/demos/forms/tables/data-table/datatable'
 import UpdateSlavesDialogue from "@/components/dialogs/Slave/UpdateSlavesDialogue.vue";
 
 const headers = [
@@ -129,7 +128,7 @@ const fetchSlaveData = async (masterId, perPage, page, search) => {
         ...(masterId ? { master_id: masterId } : {}),
         per_page: perPage,
         page: page,
-        search: searchInput?searchInput:null,
+        search: searchInput ? searchInput : null,
       },
       onResponseError({ response }) {
         errorTitle.value = 'Something Went Wrong!'
@@ -183,9 +182,8 @@ function editSlave(slave) {
 
 const handleMasterChanged = (newMasterId) => {
   masterId.value = newMasterId
-  console.log(masterId.value, 'masterId');
   masterDetails.value = masterList.value.find(master => master.id === masterId.value)
-  fetchSlaveData(masterId.value, itemsPerPage.value, page.value, searchQuery.value)
+  fetchSlaveData(masterId.value, itemsPerPage.value, currentPage.value, searchQuery.value)
 }
 
 
@@ -231,10 +229,12 @@ const handleDeleteConfirm = async (confirmed) => {
 const handlePageReload = async (confirmed) => {
   isSuccessDialogVisible.value = false
   isErrorDialogVisible.value = false
-  fetchSlaveData(masterId.value, itemsPerPage.value, currentPage.value, searchQuery.value)
+  searchQuery.value = ''
+  masterId.value = null
+  fetchSlaveData(null, itemsPerPage.value, currentPage.value, '')
   isSwitchLoading.value = false
 }
-watch([currentPage, itemsPerPage, searchQuery,masterId], () => {
+watch([currentPage, itemsPerPage, searchQuery, masterId], () => {
   fetchSlaveData(masterId.value, itemsPerPage.value, currentPage.value, searchQuery.value)
 }, { deep: true, immediate: false })
 const handleDownload = async () => {
@@ -249,7 +249,7 @@ const handleDownload = async () => {
       method: 'POST',
       body: {
         ...(masterId ? { master_id: masterId.value } : {}),
-        search: searchInput?searchInput:null,
+        search: searchInput ? searchInput : null,
       },
       onResponseError({ response }) {
         console.error("Error while downloading Slave list:", response);
@@ -283,14 +283,13 @@ const handleDownload = async () => {
   }
 }
 const isSwitchLoading = ref(false)
-function handleStatusChange(slave) {
+async function handleStatusChange(slave) {
   slave.loading = true
-  masterId.value = slave.master_id
   const updatedSlave = { ...slave, loading: true }
   console.log(slave, 'slaa')
   isSwitchLoading.value = true
   try {
-    const res = $api('slaves/update', { // Assuming $api is globally available
+    const res = await $api('slaves/update', { // Assuming $api is globally available
       method: 'POST',
       body: {
         id: slave.id,
@@ -325,6 +324,7 @@ function handleStatusChange(slave) {
       if (index !== -1) {
         slaveList.value.splice(index, 1, updatedSlave)
       }
+      await fetchSlaveData(null, itemsPerPage.value, currentPage.value, '')
     }
   } catch (Ex) {
     errorTitle.value = 'Something Went Wrong!'
@@ -334,6 +334,7 @@ function handleStatusChange(slave) {
   } finally {
     // Ensure loading state is cleared even if an error occurs
     updatedSlave.loading = false
+    isSwitchLoading.value = false
   }
 
 }
@@ -347,7 +348,7 @@ const isBulkActionVisible = ref(false)
 const isBulkDeleteDialogVisible = ref(false)
 const selectedRows = ref([]);
 const handleSelectionChange = (newSelection) => {
-  if(newSelection.length>0){
+  if (newSelection.length > 0) {
     isBulkActionVisible.value = true;
   }
   else {
@@ -440,7 +441,7 @@ const handleBulkAction = (action) => {
           <VCol cols="12" sm="6" md="3" class="px-4">
             <div class="d-flex justify-space-between align-center border-r">
               <div class="d-flex flex-column">
-                <h5 class="text-h5">{{ totalUsers?totalUsers:'--' }}</h5>
+                <h5 class="text-h5">{{ totalUsers ? totalUsers : '--' }}</h5>
                 <span class="text-body-1 text-capitalize">Total Slaves</span>
               </div>
               <VChip color="primary" outlined>
@@ -492,30 +493,16 @@ const handleBulkAction = (action) => {
               </VBtn>
             </template>
             <VList>
-              <VListItem
-                v-for="item in items"
-                :key="item.value"
-                @click="handleBulkAction(item.value)"
-              >
+              <VListItem v-for="item in items" :key="item.value" @click="handleBulkAction(item.value)">
                 <VListItemTitle>{{ item.title }}</VListItemTitle>
               </VListItem>
             </VList>
           </VMenu>
 
 
-          <AppSelect
-            v-model="masterId"
-            :items="masterDropDown"
-            placeholder="Select Master"
-            item-title="text"
-            item-value="value"
-            outlined
-            dense
-            clearable
-            clear-icon="tabler-x"
-            class="invoice-list-filter"
-            @change="handleMasterChanged"
-          />
+          <AppSelect v-model="masterId" :items="masterDropDown" placeholder="Select Master" item-title="text"
+            item-value="value" outlined dense clearable clear-icon="tabler-x" class="invoice-list-filter"
+            @change="handleMasterChanged" />
 
           <div class="invoice-list-filter">
             <AppTextField v-model="searchQuery" placeholder="Search SlaveMT5" />
@@ -532,21 +519,15 @@ const handleBulkAction = (action) => {
       </VCardText>
 
 
-      <VDataTable
-        v-if="slaveList.length > 0&&!isLoading"
-        :headers="headers"
-        :items="slaveList"
-        :items-per-page="itemsPerPage"
-        v-model="selectedRows"
-        @update:modelValue="handleSelectionChange"
-        show-select
-      >
+      <VDataTable v-if="slaveList.length > 0 && !isLoading" :headers="headers" :items="slaveList"
+        :items-per-page="itemsPerPage" v-model="selectedRows" @update:modelValue="handleSelectionChange" show-select>
         <!-- ID -->
         <template #item.id="{ item }">
           <div class="d-flex align-center">
-              <span>#{{ item.id }}<br>
-                <p class="text-overline mb-0 bp-0 pb-0 mb-0" style="line-height: 0.5rem">{{ formatDateToMonthShort(item.created_at) }}</p>
-              </span>
+            <span>#{{ item.id }}<br>
+              <p class="text-overline mb-0 bp-0 pb-0 mb-0" style="line-height: 0.5rem">{{
+                formatDateToMonthShort(item.created_at) }}</p>
+            </span>
           </div>
         </template>
 
@@ -570,7 +551,8 @@ const handleBulkAction = (action) => {
             <VChip size="medium" class="pr-2 pl-1 pt-1 pb-1 me-1">
               🥋 {{ item.master.mc_mt5_id }}
             </VChip>
-            <VChip size="medium" class="pr-2 pl-1 text-overline" style="padding-top: 0!important; padding-bottom: 0!important;letter-spacing: 0.05rem !important;">
+            <VChip size="medium" class="pr-2 pl-1 text-overline"
+              style="padding-top: 0!important; padding-bottom: 0!important;letter-spacing: 0.05rem !important;">
               🕵🏻‍♂️
               {{ item.master.mc_name }}
             </VChip>
@@ -598,20 +580,20 @@ const handleBulkAction = (action) => {
         <template #item.config="{ item }">
           <div class="d-flex align-center">
             <VAvatar rounded :color="item.copy_sl === 1 ? 'success' : 'error'"
-                     :variant="item.copy_sl === 1 ? 'tonal' : 'tonal'" class="me-1" size="30">
+              :variant="item.copy_sl === 1 ? 'tonal' : 'tonal'" class="me-1" size="30">
               SL
               <VTooltip activator="parent" location="top">
                 {{ item.copy_sl === 1 ? 'Copy StopLoss Active' : 'Copy StopLoss Disabled' }}
               </VTooltip>
             </VAvatar>
             <VAvatar rounded :color="item.copy_tp === 1 ? 'success' : 'error'"
-                     :variant="item.copy_tp === 1 ? 'tonal' : 'tonal'" class="me-1 ms-2" size="30">TP
+              :variant="item.copy_tp === 1 ? 'tonal' : 'tonal'" class="me-1 ms-2" size="30">TP
               <VTooltip activator="parent" location="top">
                 {{ item.copy_tp === 1 ? 'Copy TakeProfit Active' : 'Copy TakeProfit Disabled' }}
               </VTooltip>
             </VAvatar>
             <VAvatar rounded :color="item.is_reverse === 1 ? 'success' : 'error'"
-                     :variant="item.is_reverse === 1 ? 'tonal' : 'tonal'" class="me-1 ms-2" size="30">R
+              :variant="item.is_reverse === 1 ? 'tonal' : 'tonal'" class="me-1 ms-2" size="30">R
               <VTooltip activator="parent" location="top">
                 {{ item.is_reverse === 1 ? 'Reverse Trade Active' : 'Reverse Trade Disabled' }}
               </VTooltip>
@@ -636,9 +618,10 @@ const handleBulkAction = (action) => {
         <template #item.status="{ item }">
           <div class="d-flex align-center">
             <VSwitch v-model="item.status" :true-value="1" :false-value="0" @change="handleStatusChange(item)"
-                     :loading="item.loading">
+              :loading="item.loading">
               <template #label>
-                <span class="text-overline">{{ item.loading ? 'Loading' : (item.status === 1 ? 'Active' : 'Disabled') }}</span>
+                <span class="text-overline">{{ item.loading ? 'Loading' : (item.status === 1 ? 'Active' : 'Disabled')
+                }}</span>
               </template>
             </VSwitch>
           </div>
@@ -648,9 +631,9 @@ const handleBulkAction = (action) => {
         <template #item.action="{ item }">
           <div class="d-flex align-center">
             <VBtn color="secondary" size="x-small" variant="tonal" class="px-2 me-2 rounded" icon="tabler-edit"
-                  @click="editSlave(item)" />
+              @click="editSlave(item)" />
             <VBtn color="error" size="x-small" variant="tonal" class="px-2 me-2 rounded" icon="tabler-trash"
-                  @click="deleteSlave(item)"/>
+              @click="deleteSlave(item)" />
           </div>
         </template>
 
@@ -658,19 +641,11 @@ const handleBulkAction = (action) => {
         <template #bottom>
           <VCardText class="pt-2">
             <div class="d-flex flex-wrap justify-center justify-sm-space-between gap-y-2 mt-2">
-              <VSelect
-                v-model="itemsPerPage"
-                :items="[5, 10, 25, 50, 100]"
-                label="Rows per page:"
-                variant="underlined"
-                style="max-inline-size: 8rem;min-inline-size: 5rem;"
-              />
+              <VSelect v-model="itemsPerPage" :items="[5, 10, 25, 50, 100]" label="Rows per page:" variant="underlined"
+                style="max-inline-size: 8rem;min-inline-size: 5rem;" />
 
-              <VPagination
-                v-model="currentPage"
-                :total-visible="$vuetify.display.smAndDown ? 3 : 5"
-                :length="Math.ceil(totalUsers / itemsPerPage)"
-              />
+              <VPagination v-model="currentPage" :total-visible="$vuetify.display.smAndDown ? 3 : 5"
+                :length="Math.ceil(totalUsers / itemsPerPage)" />
             </div>
           </VCardText>
         </template>
@@ -683,26 +658,27 @@ const handleBulkAction = (action) => {
 
 
   <AddSlavesDialog v-if="masterList" v-model:isDialogVisible="isAddSlaveDialogVisible" :masterDropDown="masterDropDown"
-                   @reload="handlePageReload" />
-<!--  <EditSlavesDialog v-model:isDialogVisible="isEditSlaveDialogVisible" :masterDetails="masterDetails"
+    @reload="handlePageReload" />
+  <!--  <EditSlavesDialog v-model:isDialogVisible="isEditSlaveDialogVisible" :masterDetails="masterDetails"
                     :slaveList="selectedSlaveDetails" @reload="handlePageReload" />-->
 
-  <UpdateSlavesDialogue v-if="selectedRows" v-model:isDialogVisible="isEditSlaveDialogVisible" :masterDropDown="masterDropDown"
-                    :selectedSlaves="selectedRows" @reload="handlePageReload" />
+  <UpdateSlavesDialogue v-if="selectedRows" v-model:isDialogVisible="isEditSlaveDialogVisible"
+    :masterDropDown="masterDropDown" :selectedSlaves="selectedRows" @reload="handlePageReload" />
 
   <ChangeServerSlaveDialog v-model:isDialogVisible="isChangeServerDialogVisible" :serverDetails="serverList"
-                           @serverChanged="handleServerChanged" />
+    @serverChanged="handleServerChanged" />
   <ConfirmDialog v-model:isDialogVisible="isDeleteDialogVisible" @confirm="handleDeleteConfirm"
-                 confirmation-question="Do you want to delete slave?" cancel-title="Cancelled" confirm-title="Confirm" />
+    confirmation-question="Do you want to delete slave?" cancel-title="Cancelled" confirm-title="Confirm" />
 
   <ConfirmDialog v-model:isDialogVisible="isBulkDeleteDialogVisible" @confirm="handleBulkDeleteConfirm"
-                 confirmation-question="Do you want to delete the selected slaves?" cancel-title="Cancelled" confirm-title="Confirm" />
+    confirmation-question="Do you want to delete the selected slaves?" cancel-title="Cancelled"
+    confirm-title="Confirm" />
 
   <VDialog v-model="isSuccessDialogVisible" max-width="500">
     <VCard>
       <VCardText class="text-center px-10 py-6">
         <VBtn icon variant="outlined" color="success" class="my-4"
-              style=" block-size: 88px;inline-size: 88px; pointer-events: none;">
+          style=" block-size: 88px;inline-size: 88px; pointer-events: none;">
           <VIcon icon="tabler-check" size="38" />
         </VBtn>
         <h1 class="text-h4 mb-4">
@@ -719,7 +695,7 @@ const handleBulkAction = (action) => {
     <VCard>
       <VCardText class="text-center px-10 py-6">
         <VBtn icon variant="outlined" color="error" class="my-4"
-              style=" block-size: 88px;inline-size: 88px; pointer-events: none;">
+          style=" block-size: 88px;inline-size: 88px; pointer-events: none;">
           <span class="text-5xl font-weight-light">X</span>
         </VBtn>
         <h1 class="text-h4 mb-4">
