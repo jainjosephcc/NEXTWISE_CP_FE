@@ -19,6 +19,8 @@ const errorMessage = ref('');
 const isSuccessDialogVisible = ref(false);
 const isErrorDialogVisible = ref(false);
 
+const SERVER_NAME = import.meta.env.VITE_SERVER_NAME
+
 // Fetch server list from API
 onMounted(async () => {
   await fetchServerList()
@@ -139,7 +141,7 @@ const handlePageReload = async (confirmed) => {
         <VCardText>
           <div class="d-flex justify-space-between align-center">
             <div>
-              <h5 class="text-h5">{{ server.server_name }}</h5>
+              <h5 class="text-h5">{{ SERVER_NAME }}</h5>
               <div class="d-flex align-center pt-3">
                 <VIcon icon="tabler-edit" class="me-2 me-2" @click="showEditModal(server)" />
 
@@ -156,7 +158,7 @@ const handlePageReload = async (confirmed) => {
 
         <!-- Server Manager and Status -->
         <VCardText class="d-flex align-center pb-4">
-          <div class="text-body-1">MANAGER: {{ server.manager_name }}</div>
+          <div class="text-body-1">MANAGER: --</div>
           <VSpacer />
           <div class="v-avatar-group">
             <VChip size="x-small" :color="server.status === 1 ? 'success' : 'error'">
