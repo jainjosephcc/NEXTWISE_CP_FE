@@ -1,7 +1,9 @@
 //export const staticPrimaryColor = '#7367F0'
 //export const staticPrimaryColor = '#2CA393'
-export const staticPrimaryColor = '#FFB400'
-export const staticPrimaryDarkenColor = '#ff9900'
+//export const staticPrimaryColor = '#FFB400'
+export const staticPrimaryColor = '#f16326'
+export const staticPrimaryDarkenColor = '#cf470d'
+//export const staticPrimaryDarkenColor = '#ff9900'
 //export const staticPrimaryDarkenColor = '#1C8779'
 export const themes = {
   light: {
@@ -98,9 +100,9 @@ export const themes = {
       'error': '#FF4C51',
       'on-error': '#fff',
       'error-darken-1': '#E64449',
-      'background': '#25293C',
+      'background': '#0e0d0d',
       'on-background': '#E1DEF5',
-      'surface': '#2F3349',
+      'surface': '#171616',
       'on-surface': '#E1DEF5',
       'grey-50': '#26293A',
       'grey-100': '#2F3349',
