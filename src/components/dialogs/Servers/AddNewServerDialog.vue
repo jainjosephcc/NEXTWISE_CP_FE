@@ -166,9 +166,9 @@ watch([title], () => {
             <AppTextField v-model="managerId" label="Manager Id" type="number" />
 
           </VCol>
-          <VCol cols="6">
+          <!-- <VCol cols="6">
             <AppCheckbox v-model="sslEnabled" label="SSL Enabled" />
-          </VCol>
+          </VCol> -->
 
 
           <VCol cols="12">

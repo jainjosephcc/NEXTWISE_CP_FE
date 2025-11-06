@@ -187,9 +187,7 @@ watch([title], () => {
                             type="number" />
                         <AppTextField v-else :model-value="'--'" label="Manager Id" disabled />
                     </VCol>
-                    <VCol cols="6">
-                        <AppCheckbox v-model="sslEnabled" label="SSL Enabled" />
-                    </VCol>
+
                     <VCol cols="12">
                         <AppTextField v-model="description" label="Description" />
                     </VCol>
