@@ -35,6 +35,8 @@ const lotsize = ref(null)
 const description = ref(null)
 const commission = ref(null)
 
+const SERVER_NAME = import.meta.env.VITE_SERVER_NAME
+
 const props = defineProps({
   isDialogVisible: {
     type: Boolean,
@@ -143,7 +145,7 @@ const handlePageReload = async (confirmed) => {
                     <template #append>
                       <div class="d-flex align-center">
                         <div class="text-body-1">
-                          {{ serverDetails.server_name }}
+                          {{ SERVER_NAME }}
                         </div>
                       </div>
                     </template>

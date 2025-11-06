@@ -18,6 +18,8 @@ const headers = [
   { title: 'ACTION', key: 'action' },
 ]
 
+const SERVER_NAME = import.meta.env.VITE_SERVER_NAME
+
 const resolveStatusVariant = (status) => {
   if (status === 1)
     return { color: 'primary', text: 'Current' }
@@ -413,7 +415,7 @@ const handleBulkAction = (action) => {
           <VCol cols="12" sm="6" md="3" class="px-4">
             <div class="d-flex justify-space-between align-center border-r">
               <div class="d-flex flex-column">
-                <h5 class="text-h6">{{ serverDetails.server_name }}</h5>
+                <h5 class="text-h6">{{ SERVER_NAME }}</h5>
                 <span class="text-body-2 text-capitalize">Server</span>
               </div>
               <VAvatar variant="tonal" rounded size="42">
