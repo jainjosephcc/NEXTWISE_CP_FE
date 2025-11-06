@@ -9,8 +9,8 @@ import {
 import { useLayoutConfigStore } from '@layouts/stores/config'
 import { injectionKeyIsVerticalNavHovered } from '@layouts/symbols'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import PBlogoDark from '/public/dark_logo.svg'
-import PBlogo from '/public/light_logo.svg'
+import PBlogoDark from '/dark_logo.svg'
+import PBlogo from '/light_logo.svg'
 
 const props = defineProps({
   tag: {
