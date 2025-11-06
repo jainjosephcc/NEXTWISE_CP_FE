@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+const serverName = import.meta.env.VITE_SERVER_NAME
 
 const selectedIndex = ref(0);
 
@@ -62,7 +63,7 @@ function changeServer() {
                                 class="d-flex flex-column justify-center align-center cursor-pointer rounded py-6 px-2"
                                 @click="toggle">
                                 <h6 class="text-base font-weight-medium mx-2">
-                                    {{ data.server_name }}
+                                    {{ serverName }}
                                 </h6>
                             </div>
                         </VSlideGroupItem>

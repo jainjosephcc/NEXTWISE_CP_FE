@@ -171,7 +171,7 @@ const handleServerChanged = (newServerId) => {
           <VCol cols="12" sm="6" md="3" class="px-4">
             <div class="d-flex justify-space-between align-center border-r">
               <div class="d-flex flex-column">
-                <h5 class="text-h6">{{ serverDetails.manager_name }}</h5>
+                <h5 class="text-h6">--</h5>
                 <span class="text-body-2 text-capitalize">Manager</span>
               </div>
               <VAvatar variant="tonal" rounded size="42">
