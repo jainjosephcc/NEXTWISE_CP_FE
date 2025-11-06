@@ -135,7 +135,7 @@ const websiteAnalytics = [
 <style lang="scss">
 // Coral Markets Analytics Hero Card Styling
 .coral-analytics-hero-card {
-  background: linear-gradient(135deg, #22C58B 0%, #18A873 50%, #129164 100%) !important;
+  background: linear-gradient(135deg, #f16326 0%, #e05520 50%, #cf470d 100%) !important;
   border: none !important;
   border-radius: 20px !important;
   overflow: hidden;
@@ -198,9 +198,9 @@ const websiteAnalytics = [
 }
 
 .coral-success-chip {
-  background: rgba(16, 185, 129, 0.2) !important;
-  border: 1px solid rgba(16, 185, 129, 0.4) !important;
-  color: #10B981 !important;
+  background: rgba(241, 99, 38, 0.2) !important;
+  border: 1px solid rgba(241, 99, 38, 0.4) !important;
+  color: #f16326 !important;
   backdrop-filter: blur(8px);
   animation: pulse 2s infinite;
 }

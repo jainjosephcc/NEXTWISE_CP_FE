@@ -172,31 +172,31 @@ const moreList = [
 <style lang="scss" scoped>
 // Coral Markets Support Tracker Styling
 .coral-support-card {
-  background: rgba(var(--v-theme-surface), 0.8) !important;
-  backdrop-filter: blur(8px);
   border: 1px solid rgba(var(--v-theme-primary), 0.1) !important;
   border-radius: 16px !important;
+  backdrop-filter: blur(8px);
+  background: rgba(var(--v-theme-surface), 0.8) !important;
   transition: all 0.3s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(var(--v-theme-primary), 0.15) !important;
     border-color: rgba(var(--v-theme-primary), 0.2) !important;
+    box-shadow: 0 8px 24px rgba(var(--v-theme-primary), 0.15) !important;
+    transform: translateY(-2px);
   }
 }
 
 .coral-support-stats {
-  background: linear-gradient(135deg, rgba(var(--v-theme-primary), 0.05) 0%, rgba(var(--v-theme-primary), 0.02) 100%);
-  border-radius: 12px;
   padding: 20px;
   border: 1px solid rgba(var(--v-theme-primary), 0.08);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(var(--v-theme-primary), 0.05) 0%, rgba(var(--v-theme-primary), 0.02) 100%);
 }
 
 .coral-stats-chip {
-  background: rgba(16, 185, 129, 0.1) !important;
-  border: 1px solid rgba(16, 185, 129, 0.2) !important;
-  color: #10B981 !important;
+  border: 1px solid rgba(var(--v-theme-primary), 0.2) !important;
   backdrop-filter: blur(8px);
+  background: rgba(var(--v-theme-primary), 0.1) !important;
+  color: rgb(var(--v-theme-primary)) !important;
   font-weight: 600;
 }
 
@@ -204,15 +204,15 @@ const moreList = [
   --v-card-list-gap: 16px;
 
   .coral-support-item {
-    background: rgba(var(--v-theme-primary), 0.02);
-    border-radius: 12px;
     padding: 16px;
     border: 1px solid rgba(var(--v-theme-primary), 0.05);
+    border-radius: 12px;
+    background: rgba(var(--v-theme-primary), 0.02);
     transition: all 0.3s ease;
 
     &:hover {
-      background: rgba(var(--v-theme-primary), 0.05);
       border-color: rgba(var(--v-theme-primary), 0.1);
+      background: rgba(var(--v-theme-primary), 0.05);
       transform: translateX(4px);
     }
   }
@@ -223,72 +223,72 @@ const moreList = [
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.1);
     box-shadow: 0 6px 16px rgba(var(--v-theme-primary), 0.3);
+    transform: scale(1.1);
   }
 }
 
 .coral-chart-wrapper {
-  background: linear-gradient(135deg, rgba(var(--v-theme-primary), 0.03) 0%, rgba(var(--v-theme-primary), 0.01) 100%);
-  border-radius: 12px;
   padding: 16px;
   border: 1px solid rgba(var(--v-theme-primary), 0.08);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(var(--v-theme-primary), 0.03) 0%, rgba(var(--v-theme-primary), 0.01) 100%);
 }
 
 .coral-support-chart {
   .apexcharts-radialbar-area {
-    fill: #22C58B !important;
+    fill: rgb(var(--v-theme-primary)) !important;
   }
 
   .apexcharts-radialbar-track {
-    fill: rgba(255, 255, 255, 0.1) !important;
+    fill: rgba(255, 255, 255, 10%) !important;
   }
 
   .apexcharts-radialbar-series {
     .apexcharts-radialbar-area {
-      fill: url(#coralRadialGradient) !important;
+      fill: url("#coralRadialGradient") !important;
     }
   }
 }
 
 // Enhanced text colors
 .text-primary {
-  color: #22C58B !important;
+  color: rgb(var(--v-theme-primary)) !important;
 }
 
 .text-success {
-  color: #10B981 !important;
+  color: rgb(var(--v-theme-success)) !important;
 }
 
 // Dark theme adjustments
 .v-theme--dark {
   .coral-support-card {
-    background: rgba(15, 23, 42, 0.8) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 10%) !important;
+    background: rgba(15, 23, 42, 80%) !important;
 
     &:hover {
-      border-color: rgba(34, 197, 139, 0.3) !important;
-      box-shadow: 0 8px 24px rgba(34, 197, 139, 0.2) !important;
+      border-color: rgba(34, 197, 139, 30%) !important;
+      box-shadow: 0 8px 24px rgba(34, 197, 139, 20%) !important;
     }
   }
 
   .coral-support-stats {
-    background: linear-gradient(135deg, rgba(34, 197, 139, 0.05) 0%, rgba(34, 197, 139, 0.02) 100%);
-    border-color: rgba(34, 197, 139, 0.1);
+    border-color: rgba(34, 197, 139, 10%);
+    background: linear-gradient(135deg, rgba(34, 197, 139, 5%) 0%, rgba(34, 197, 139, 2%) 100%);
   }
 
   .coral-chart-wrapper {
-    background: linear-gradient(135deg, rgba(34, 197, 139, 0.05) 0%, rgba(34, 197, 139, 0.02) 100%);
-    border-color: rgba(34, 197, 139, 0.1);
+    border-color: rgba(34, 197, 139, 10%);
+    background: linear-gradient(135deg, rgba(34, 197, 139, 5%) 0%, rgba(34, 197, 139, 2%) 100%);
   }
 
   .coral-support-item {
-    background: rgba(34, 197, 139, 0.03);
-    border-color: rgba(34, 197, 139, 0.08);
+    border-color: rgba(34, 197, 139, 8%);
+    background: rgba(34, 197, 139, 3%);
 
     &:hover {
-      background: rgba(34, 197, 139, 0.06);
-      border-color: rgba(34, 197, 139, 0.15);
+      border-color: rgba(34, 197, 139, 15%);
+      background: rgba(34, 197, 139, 6%);
     }
   }
 }
@@ -296,32 +296,32 @@ const moreList = [
 // Light theme adjustments
 .v-theme--light {
   .coral-support-card {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border-color: rgba(34, 197, 139, 0.1) !important;
+    border-color: rgba(34, 197, 139, 10%) !important;
+    background: rgba(255, 255, 255, 90%) !important;
 
     &:hover {
-      border-color: rgba(34, 197, 139, 0.2) !important;
-      box-shadow: 0 8px 24px rgba(34, 197, 139, 0.1) !important;
+      border-color: rgba(34, 197, 139, 20%) !important;
+      box-shadow: 0 8px 24px rgba(34, 197, 139, 10%) !important;
     }
   }
 
   .coral-support-stats {
-    background: linear-gradient(135deg, rgba(34, 197, 139, 0.02) 0%, rgba(34, 197, 139, 0.01) 100%);
-    border-color: rgba(34, 197, 139, 0.06);
+    border-color: rgba(34, 197, 139, 6%);
+    background: linear-gradient(135deg, rgba(34, 197, 139, 2%) 0%, rgba(34, 197, 139, 1%) 100%);
   }
 
   .coral-chart-wrapper {
-    background: linear-gradient(135deg, rgba(34, 197, 139, 0.02) 0%, rgba(34, 197, 139, 0.01) 100%);
-    border-color: rgba(34, 197, 139, 0.06);
+    border-color: rgba(34, 197, 139, 6%);
+    background: linear-gradient(135deg, rgba(34, 197, 139, 2%) 0%, rgba(34, 197, 139, 1%) 100%);
   }
 
   .coral-support-item {
-    background: rgba(34, 197, 139, 0.01);
-    border-color: rgba(34, 197, 139, 0.03);
+    border-color: rgba(34, 197, 139, 3%);
+    background: rgba(34, 197, 139, 1%);
 
     &:hover {
-      background: rgba(34, 197, 139, 0.03);
-      border-color: rgba(34, 197, 139, 0.08);
+      border-color: rgba(34, 197, 139, 8%);
+      background: rgba(34, 197, 139, 3%);
     }
   }
 }
@@ -340,7 +340,7 @@ const moreList = [
 
   .coral-support-stats {
     padding: 16px;
-    margin-bottom: 20px;
+    margin-block-end: 20px;
   }
 
   .coral-support-list {
@@ -379,7 +379,7 @@ const moreList = [
 .coral-support-chart {
   .apexcharts-radialbar-series {
     .apexcharts-radialbar-area {
-      fill: #22C58B !important;
+      fill: rgb(var(--v-theme-primary)) !important;
       opacity: 0.9;
     }
   }

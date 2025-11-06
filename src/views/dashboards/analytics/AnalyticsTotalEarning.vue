@@ -127,9 +127,9 @@ const moreList = [{ title: 'View More', value: 'View More' }, { title: 'Delete',
 }
 
 .coral-performance-chip {
-  background: rgba(16, 185, 129, 0.1) !important;
-  border: 1px solid rgba(16, 185, 129, 0.2) !important;
-  color: #10B981 !important;
+  background: rgba(var(--v-theme-primary), 0.1) !important;
+  border: 1px solid rgba(var(--v-theme-primary), 0.2) !important;
+  color: rgb(var(--v-theme-primary)) !important;
   backdrop-filter: blur(8px);
   font-weight: 600;
 }
@@ -143,7 +143,7 @@ const moreList = [{ title: 'View More', value: 'View More' }, { title: 'Delete',
 
 /* ✅ pierce scoped styles for ApexCharts */
 .coral-earning-chart :deep(.apexcharts-series[data-seriesName="Earning"] .apexcharts-bar-area) {
-  fill: #22C58B !important;
+  fill: #f16326 !important;
 }
 
 .coral-earning-chart :deep(.apexcharts-series[data-seriesName="Expense"] .apexcharts-bar-area) {
@@ -179,19 +179,19 @@ const moreList = [{ title: 'View More', value: 'View More' }, { title: 'Delete',
 }
 
 .coral-earning-chip {
-  background: rgba(16, 185, 129, 0.1) !important;
-  border: 1px solid rgba(16, 185, 129, 0.2) !important;
-  color: #10B981 !important;
+  background: rgba(var(--v-theme-primary), 0.1) !important;
+  border: 1px solid rgba(var(--v-theme-primary), 0.2) !important;
+  color: rgb(var(--v-theme-primary)) !important;
   font-weight: 600;
   backdrop-filter: blur(8px);
 }
 
 .text-primary {
-  color: #22C58B !important;
+  color: rgb(var(--v-theme-primary)) !important;
 }
 
 .text-success {
-  color: #10B981 !important;
+  color: rgb(var(--v-theme-success)) !important;
 }
 
 .v-theme--dark {

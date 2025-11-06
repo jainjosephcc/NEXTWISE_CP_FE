@@ -147,32 +147,32 @@ definePage({
 
   // Enhanced page header styling
   .analytics-header {
-    background: linear-gradient(135deg, rgba(var(--v-theme-primary), 0.05) 0%, rgba(var(--v-theme-primary), 0.02) 100%);
-    border-radius: 16px;
     padding: 24px;
     border: 1px solid rgba(var(--v-theme-primary), 0.1);
+    border-radius: 16px;
     backdrop-filter: blur(8px);
+    background: linear-gradient(135deg, rgba(var(--v-theme-primary), 0.05) 0%, rgba(var(--v-theme-primary), 0.02) 100%);
 
     h1 {
       background: linear-gradient(135deg, rgb(var(--v-theme-primary)) 0%, rgb(var(--v-theme-secondary)) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 
   // Coral-themed button styles
   .coral-btn-primary {
-    background: linear-gradient(135deg, #22C58B 0%, #18A873 50%, #129164 100%) !important;
-    color: #0B1220 !important;
     border: none !important;
-    box-shadow: 0 4px 15px rgba(34, 197, 139, 0.3), 0 2px 8px rgba(34, 197, 139, 0.2);
+    background: linear-gradient(135deg, #f16326 0%, #e05520 50%, #cf470d 100%) !important;
+    box-shadow: 0 4px 15px rgba(241, 99, 38, 30%), 0 2px 8px rgba(241, 99, 38, 20%);
+    color: #fff !important;
     transition: all 0.3s ease;
 
     &:hover {
-      background: linear-gradient(135deg, #18A873 0%, #129164 50%, #0F7A5A 100%) !important;
+      background: linear-gradient(135deg, #e05520 0%, #cf470d 50%, #b83d0a 100%) !important;
+      box-shadow: 0 8px 25px rgba(241, 99, 38, 40%), 0 4px 12px rgba(241, 99, 38, 30%);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(34, 197, 139, 0.4), 0 4px 12px rgba(34, 197, 139, 0.3);
     }
 
     &:active {
@@ -182,13 +182,13 @@ definePage({
 
   .coral-btn-outlined {
     border: 2px solid rgb(var(--v-theme-primary)) !important;
-    color: rgb(var(--v-theme-primary)) !important;
     background: transparent !important;
+    color: rgb(var(--v-theme-primary)) !important;
     transition: all 0.3s ease;
 
     &:hover {
-      background: rgba(var(--v-theme-primary), 0.1) !important;
       border-color: rgb(var(--v-theme-primary)) !important;
+      background: rgba(var(--v-theme-primary), 0.1) !important;
       transform: translateY(-1px);
     }
   }
@@ -245,44 +245,44 @@ definePage({
 
   // Custom metric card styling
   .coral-metric-card {
-    background: rgba(var(--v-theme-surface), 0.8) !important;
-    backdrop-filter: blur(8px);
     border: 1px solid rgba(var(--v-theme-primary), 0.1) !important;
     border-radius: 16px !important;
+    backdrop-filter: blur(8px);
+    background: rgba(var(--v-theme-surface), 0.8) !important;
     transition: all 0.3s ease;
 
     &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(var(--v-theme-primary), 0.15) !important;
       border-color: rgba(var(--v-theme-primary), 0.2) !important;
+      box-shadow: 0 12px 32px rgba(var(--v-theme-primary), 0.15) !important;
+      transform: translateY(-4px);
     }
   }
 
   // Enhanced card hover effects
   .v-card {
-    transition: all 0.3s ease;
     border-radius: 16px !important;
+    transition: all 0.3s ease;
 
     &:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 12%) !important;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
     }
   }
 
   // Primary color overrides for coral theme
   .v-card[color="primary"] {
-    background: linear-gradient(135deg, #22C58B 0%, #18A873 50%, #129164 100%) !important;
     border: none !important;
-    box-shadow: 0 8px 24px rgba(34, 197, 139, 0.25) !important;
+    background: linear-gradient(135deg, #f16326 0%, #e05520 50%, #cf470d 100%) !important;
+    box-shadow: 0 8px 24px rgba(241, 99, 38, 25%) !important;
   }
 
   // Enhanced text colors for better contrast
   .text-primary {
-    color: #22C58B !important;
+    color: rgb(var(--v-theme-primary)) !important;
   }
 
   .text-success {
-    color: #10B981 !important;
+    color: rgb(var(--v-theme-success)) !important;
   }
 
   // Custom animations
@@ -313,17 +313,17 @@ definePage({
   // Dark theme enhancements
   .v-theme--dark & {
     .analytics-header {
-      background: linear-gradient(135deg, rgba(34, 197, 139, 0.08) 0%, rgba(34, 197, 139, 0.03) 100%);
-      border-color: rgba(34, 197, 139, 0.15);
+      border-color: rgba(34, 197, 139, 15%);
+      background: linear-gradient(135deg, rgba(34, 197, 139, 8%) 0%, rgba(34, 197, 139, 3%) 100%);
     }
 
     .coral-metric-card {
-      background: rgba(15, 23, 42, 0.8) !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
+      border-color: rgba(255, 255, 255, 10%) !important;
+      background: rgba(15, 23, 42, 80%) !important;
 
       &:hover {
-        border-color: rgba(34, 197, 139, 0.3) !important;
-        box-shadow: 0 12px 32px rgba(34, 197, 139, 0.2) !important;
+        border-color: rgba(34, 197, 139, 30%) !important;
+        box-shadow: 0 12px 32px rgba(34, 197, 139, 20%) !important;
       }
     }
   }
@@ -331,17 +331,17 @@ definePage({
   // Light theme enhancements
   .v-theme--light & {
     .analytics-header {
-      background: linear-gradient(135deg, rgba(34, 197, 139, 0.03) 0%, rgba(34, 197, 139, 0.01) 100%);
-      border-color: rgba(34, 197, 139, 0.08);
+      border-color: rgba(34, 197, 139, 8%);
+      background: linear-gradient(135deg, rgba(34, 197, 139, 3%) 0%, rgba(34, 197, 139, 1%) 100%);
     }
 
     .coral-metric-card {
-      background: rgba(255, 255, 255, 0.9) !important;
-      border-color: rgba(34, 197, 139, 0.1) !important;
+      border-color: rgba(34, 197, 139, 10%) !important;
+      background: rgba(255, 255, 255, 90%) !important;
 
       &:hover {
-        border-color: rgba(34, 197, 139, 0.2) !important;
-        box-shadow: 0 12px 32px rgba(34, 197, 139, 0.1) !important;
+        border-color: rgba(34, 197, 139, 20%) !important;
+        box-shadow: 0 12px 32px rgba(34, 197, 139, 10%) !important;
       }
     }
   }
@@ -349,12 +349,12 @@ definePage({
 
 // Global coral color system integration
 :root {
-  --coral-primary: #22C58B;
-  --coral-primary-dark: #18A873;
-  --coral-primary-darker: #129164;
-  --coral-primary-light: #39D29A;
-  --coral-ink-900: #0B1220;
-  --coral-ink-800: #0F172A;
+  --coral-primary: #f16326;
+  --coral-primary-dark: #e05520;
+  --coral-primary-darker: #cf470d;
+  --coral-primary-light: #ff7a3d;
+  --coral-ink-900: #0b1220;
+  --coral-ink-800: #0f172a;
   --coral-ink-700: #111827;
 }
 
