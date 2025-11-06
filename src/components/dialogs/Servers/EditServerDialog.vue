@@ -23,6 +23,8 @@ const errorMessage = ref('');
 const successTitle = ref('');
 const successMessage = ref('');
 
+const SERVER_NAME = import.meta.env.VITE_SERVER_NAME
+
 const props = defineProps({
     isDialogVisible: {
         type: Boolean,
@@ -155,10 +157,14 @@ watch([title], () => {
             <VForm @submit.prevent="() => { }">
                 <VRow>
                     <VCol cols="6">
-                        <AppTextField v-model="company" label="Company Name" maxlength="30" />
+                        <!-- <AppTextField v-model="company" label="Company Name" maxlength="30" /> -->
+                        <AppTextField v-if="!props.selectedServer" v-model="title" label="Company Name"
+                            maxlength="30" />
+                        <AppTextField v-else :model-value="SERVER_NAME" label="Company Name" maxlength="30" disabled />
                     </VCol>
                     <VCol cols="6">
-                        <AppTextField v-model="title" label="Server Name" maxlength="30" />
+                        <AppTextField v-if="!props.selectedServer" v-model="title" label="Server Name" maxlength="30" />
+                        <AppTextField v-else :model-value="SERVER_NAME" label="Server Name" maxlength="30" disabled />
                     </VCol>
                     <VCol cols="6">
                         <AppSelect v-model="selectedStatus" :items="levelOption" item-title="text" item-value="value"
@@ -177,7 +183,9 @@ watch([title], () => {
                         <AppTextField v-model="serverPort" label="Server Port" type="number" />
                     </VCol>
                     <VCol cols="6">
-                        <AppTextField v-model="managerId" label="Manager Id" type="number" />
+                        <AppTextField v-if="!props.selectedServer" v-model="managerId" label="Manager Id"
+                            type="number" />
+                        <AppTextField v-else :model-value="'--'" label="Manager Id" disabled />
                     </VCol>
                     <VCol cols="6">
                         <AppCheckbox v-model="sslEnabled" label="SSL Enabled" />

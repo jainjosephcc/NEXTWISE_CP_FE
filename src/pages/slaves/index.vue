@@ -374,7 +374,7 @@ function handleStatusChange(slave) {
           <VCol cols="12" sm="6" md="3" class="px-4">
             <div class="d-flex justify-space-between align-center border-r">
               <div class="d-flex flex-column">
-                <h5 class="text-h5">{{ serverDetails.manager_name }}</h5>
+                <h5 class="text-h5">--</h5>
                 <span class="text-body-1 text-capitalize">Manager</span>
               </div>
               <div class="d-flex flex-column align-end">
