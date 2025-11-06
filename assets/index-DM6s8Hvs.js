@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{V as r}from"./VCardTitle-BiITgjs_.js";import{o as t,f as o,e as a,t as c}from"./index-MgTNQxVX.js";import"./createSimpleFunctional-oYa5xB7G.js";const s={};function n(f,i){return t(),o(r,null,{default:a(()=>[c("Group Copier")]),_:1})}const l=e(s,[["render",n]]);export{l as default};
