@@ -1,0 +1,1 @@
+import{_ as s}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o,c as t,d as e,v as a}from"./index-D3l41LHo.js";const n={},c=e("p",null,"This is user IB page.",-1);function i(r,_){return o(),t("div",null,[c,e("p",null,"Current user id: "+a(r.$route.params.id),1)])}const p=s(n,[["render",i]]);export{p as default};
