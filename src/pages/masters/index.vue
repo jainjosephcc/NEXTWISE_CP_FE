@@ -1,5 +1,5 @@
 <script setup>
-
+const serverName = import.meta.env.VITE_SERVER_NAME
 // Reactive References for Table Controls
 const searchQuery = ref('')
 const selectedStatus = ref(null)
@@ -144,7 +144,7 @@ const handleServerChanged = (newServerId) => {
           <VCol cols="12" sm="6" md="3" class="px-4">
             <div class="d-flex justify-space-between align-center border-r">
               <div class="d-flex flex-column">
-                <h5 class="text-h6">{{ serverDetails.server_name }}</h5>
+                <h5 class="text-h6">{{ serverName }}</h5>
                 <span class="text-body-2 text-capitalize">Server</span>
               </div>
               <VAvatar variant="tonal" rounded size="42">
