@@ -40,6 +40,8 @@ onMounted(async () => {
   await fetchServerList()
 })
 
+const SERVER_NAME = import.meta.env.VITE_SERVER_NAME
+
 const itemsPerPage = ref(15)
 const page = ref(1)
 const totalUsers = ref(0)
@@ -358,7 +360,7 @@ function handleStatusChange(slave) {
           <VCol cols="12" sm="6" md="3" class="px-4">
             <div class="d-flex justify-space-between align-center border-r">
               <div class="d-flex flex-column">
-                <h5 class="text-h6">{{ serverDetails.server_name }}</h5>
+                <h5 class="text-h6">{{ SERVER_NAME }}</h5>
                 <span class="text-body-2 text-capitalize">Server</span>
               </div>
               <VAvatar variant="tonal" rounded size="42">
